@@ -1,14 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using Recipe_App_Api;
 using Recipe_App_Api.Data;
+using Recipe_App_Api.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddTransient<Seed>();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddTransient<Seed>(); // Populate DB with mock data
+
+// Map Interfaces and Repositories
+builder.Services.AddScoped<IRecipeInterface, RecipeRepository>();
+
+// Map AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>

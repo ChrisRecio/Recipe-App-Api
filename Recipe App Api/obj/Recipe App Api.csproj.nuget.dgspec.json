@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Api\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj": {}
+    "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Api\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj": {
+    "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Api\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj",
+        "projectUniqueName": "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj",
         "projectName": "Recipe App Api",
-        "projectPath": "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Api\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj",
+        "projectPath": "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Recipe App Api\\Recipe App Api\\Recipe App Api.csproj",
         "packagesPath": "C:\\Users\\Chris-Desktop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Api\\Recipe App Api\\Recipe App Api\\obj\\",
+        "outputPath": "C:\\Users\\Chris-Desktop\\Documents\\Recipe App\\Recipe App Api\\Recipe App Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
