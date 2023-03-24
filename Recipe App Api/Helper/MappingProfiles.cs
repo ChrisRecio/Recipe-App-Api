@@ -9,6 +9,8 @@ namespace Recipe_App_Api.Helper
         public MappingProfiles()
         {
             CreateMap<Recipe, RecipeDto>();
+            CreateMap<Ingredient, IngredientDto>();
+            CreateMap<RecipeStep, RecipeStepDto>();
         }
     }
 }
