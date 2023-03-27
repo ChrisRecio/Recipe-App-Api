@@ -18,7 +18,7 @@ namespace Recipe_App_Api.Controllers
             this._mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllRecipes", Name = "getAllRecipes")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Recipe>))]
         public IActionResult GetAllRecipes()
         {
@@ -30,7 +30,7 @@ namespace Recipe_App_Api.Controllers
             return Ok(recipes);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetRecipeById/{id}", Name = "getRecipeById")]
         [ProducesResponseType(200, Type = typeof(Recipe))]
         [ProducesResponseType(400)]
         public IActionResult GetRecipeById(int id)
@@ -38,7 +38,9 @@ namespace Recipe_App_Api.Controllers
             if(!_recipeRepository.RecipeExists(id))
                 return NotFound();
 
-            var recipe = _mapper.Map<RecipeDto>(_recipeRepository.GetRecipeById(id));
+            // Does not inclue Ingredients or RecipeSteps
+            // var recipe = _mapper.Map<RecipeDto>(_recipeRepository.GetRecipeById(id));
+            var recipe = _recipeRepository.GetRecipeById(id);
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

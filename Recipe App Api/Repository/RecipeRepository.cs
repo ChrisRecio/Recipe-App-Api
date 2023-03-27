@@ -18,7 +18,28 @@ public class RecipeRepository : IRecipeInterface
 
     public Recipe GetRecipeById(int id)
     {
-        return _context.Recipes.Where(p => p.Id == id).FirstOrDefault();
+        var query = (from r in _context.Recipes
+                     where r.Id == id
+                     select new Recipe()
+                     {
+                         Id = r.Id,
+                         Name = r.Name,
+                         Image = r.Image,
+                         Servings = r.Servings,
+                         Description = r.Description,
+                         CourseId = r.CourseId,
+                         PrepTime = r.PrepTime,
+                         CookTime = r.CookTime,
+                         PrepTimeMeasurement = r.PrepTimeMeasurement,
+                         CookTimeMeasurement = r.CookTimeMeasurement,
+                         Ingredients = r.Ingredients.Where(x => x.RecipeId == r.Id).ToList(),
+                         RecipeSteps = r.RecipeSteps.Where(x => x.RecipeId == r.Id).ToList(),
+                     }).FirstOrDefault();
+
+        return query;
+
+        // Does not inclue Ingredients or RecipeSteps
+        // return _context.Recipes.Where(p => p.Id == id).FirstOrDefault();
     }
 
     public bool RecipeExists(int id)

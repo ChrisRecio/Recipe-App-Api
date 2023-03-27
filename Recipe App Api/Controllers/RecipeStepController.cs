@@ -19,7 +19,7 @@ namespace Recipe_App_Api.Controllers
             this._mapper = mapper;
         }
 
-        [HttpGet("recipeId/{recipeId}", Name = "getAllRecipeStepsByRecipeId")]
+        [HttpGet("GetAllRecipeStepsByRecipeId/{recipeId}", Name = "getAllRecipeStepsByRecipeId")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<RecipeStep>))]
         public IActionResult getAllRecipeStepsByRecipeId(int recipeId)
         {
@@ -31,7 +31,7 @@ namespace Recipe_App_Api.Controllers
             return Ok(recipeSteps);
         }
 
-        [HttpGet("{recipeStepById}", Name = "getRecipeStepById")]
+        [HttpGet("GetRecipeStepById/{recipeStepById}", Name = "getRecipeStepById")]
         [ProducesResponseType(200, Type = typeof(Ingredient))]
         [ProducesResponseType(400)]
         public IActionResult getRecipeStepById(int ingredientId)

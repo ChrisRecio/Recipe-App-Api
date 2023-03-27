@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Recipe_App_Api;
+using Recipe_App_Api.Authentication;
 using Recipe_App_Api.Data;
 using Recipe_App_Api.Interfaces;
 using Recipe_App_Api.Repository;
@@ -8,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+// Uncomment to enable Api Key
+builder.Services.AddControllers(/*x => x.Filters.Add<ApiKeyAuthFilter>()*/);
 builder.Services.AddTransient<Seed>(); // Populate DB with mock data
 
 // Map Interfaces and Repositories
