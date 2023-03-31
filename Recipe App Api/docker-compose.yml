@@ -16,5 +16,5 @@ services:
           - "1433:1433"
 
         environment:
-            SA_PASSWORD: "Password"
+            SA_PASSWORD: "Password" # CHANGE PW BEFORE DEPLOYING
             ACCEPT_EULA: "Y"
