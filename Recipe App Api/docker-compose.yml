@@ -1,20 +1,12 @@
-version: "3.4"
+version: "3.9"
 
 services:
-    api:
-        build:
-          context: .
-          dockerfile: Dockerfile
-        ports:
-          - "8080:80"
-        depends_on:
-          - db
-
-    db:
-        image: "mcr.microsoft.com/mssql/server:2022-latest"
-        ports:
-          - "1433:1433"
-
+    web_api:
+        image: web_api
+        container_name: web_api_application
         environment:
-            SA_PASSWORD: "Password" # CHANGE PW BEFORE DEPLOYING
-            ACCEPT_EULA: "Y"
+            - ASPNETCORE_ENVIRONMENT=Development
+        volumes:
+              - $APPDATA/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+        ports:
+            - "5000:80"

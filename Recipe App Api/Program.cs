@@ -25,14 +25,25 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
 {
+    //options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     options.UseSqlServer(builder.Configuration.GetConnectionString("ServerConnection"));
+    //options.UseSqlServer(builder.Configuration.GetConnectionString("DockerDBConnection"));
 });
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
-// Populate database with mock data (seed.cs)
-if (args.Length == 1 && args[0].ToLower() == "seeddata")
+using (var scope = app.Services.CreateScope())
+{
+    var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+    dataContext.Database.EnsureCreated();
     SeedData(app);
+}
+
+
+// Populate database with mock data (seed.cs)
+//if (args.Length == 1 && args[0].ToLower() == "seeddata")
+//    SeedData(app);
 
 void SeedData(IHost app)
 {
